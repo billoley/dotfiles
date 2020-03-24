@@ -1,0 +1,93 @@
+# copy this file to ~/.bashrc-custom and modify for environment
+
+# the following are exported in bashrc if they exist
+JAVA_HOME="/usr/java/jdk1.8.0_161"
+M2_HOME="${HOME}/applications/apache-maven/current"
+
+export APP_HOME="/home/wwoley/applications"
+export LOG_DIR="/srv/logs"
+
+export ZOOKEEPER_HOME="${APP_HOME}/zookeeper/current"
+export ZOOCFGDIR="${ZOOKEEPER_HOME}/conf"
+export ZOO_LOG_DIR="${LOG_DIR}/zookeeper"
+
+export HADOOP_HOME="${APP_HOME}/hadoop/current"
+export HADOOP_OPTS="-Djava.security.krb5.realm= -Djava.security.krb5.kdc="
+export YARN_OPTS="-Djava.security.krb5.realm= -Djava.security.krb5.kdc="
+export HADOOP_CONF_DIR="${HADOOP_HOME}/etc/hadoop"
+export YARN_CONF_DIR="${HADOOP_HOME}/etc/hadoop"
+export HADOOP_COMMON_HOME="$HADOOP_HOME"
+export HADOOP_MAPRED_HOME="$HADOOP_HOME"
+export HADOOP_PREFIX="$HADOOP_HOME"
+export HADOOP_HDFS_HOME="$HADOOP_HOME"
+export HADOOP_IDENT_STRING="wwoley"
+export YARN_IDENT_STRING="wwoley"
+export HADOOP_SSH_OPTS="-l wwoley"
+export HADOOP_LOG_DIR="${LOG_DIR}/hadoop"
+
+export ACCUMULO_HOME="${APP_HOME}/accumulo/current"
+export ACCUMULO_LOG_DIR="${LOG_DIR}/accumulo"
+
+export PATH=/usr/local/openresty/nginx/sbin:${PATH}:${HADOOP_HOME}/sbin:${HADOOP_HOME}/bin:${ACCUMULO_HOME}/bin:${ZOOKEEPER_HOME}/bin:${HOME}/applications/bin:${APP_HOME}/go/bin
+
+ulimit -n 32768
+
+#ANT_HOME="${HOME}/opt/ant"
+#SCALA_HOME="${HOME}/opt/scala"
+
+# override location of ivy2 repo, setup in bashrc
+# remove to use default ~/.ivy2
+#IVY2_REPO_DIR=/somepath
+
+#SBT_OPTS="-Dsbt.ivy.home=${IVY2_REPO_DIR} -Divy.home=${IVY2_REPO_DIR} -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
+    
+# setup servers
+#export JETTY_HOME=${HOME}/opt/jetty
+#export JBOSS_HOME=${HOME}/opt/jboss
+#export APPENGINE_HOME=/Library/GoogleAppEngine/Home
+#export MONGO_HOME=${HOME}/opt/mongo
+
+# python from brew
+#which brew 1> /dev/null && export PYTHONPATH="$(brew --prefix)/lib/python2.7/site-packages:$PYTHONPATH"
+
+
+# python on linux
+export PYTHONPATH="/home/wwoley/.local/lib/python2.7/site-packages"
+
+# docbook
+#XML_CATALOG_FILES="${XML_CATALOG_FILES:-/usr/local/etc/xml/catalog}"
+#if [ -e "${XML_CATALOG_FILES}" ]; then
+  #export XML_CATALOG_FILES=${XML_CATALOG_FILES}
+#fi
+
+# mactex
+#if [ $(uname) == "Darwin" ]; then
+  # install mactex from http://www.tug.org/mactex/ and update accordingly
+  #export MACTEXT_HOME="/usr/local/texlive/2012/bin/x86_64-darwin"
+  #prepend_path "${MACTEXT_HOME}"
+#fi
+
+# emacs on MacOSX, seems to be needed by cask
+#export EMACS=/Applications/Emacs.app/Contents/MacOS/Emacs
+
+# rbenv
+#RBENV="${HOME}/.rbenv"
+
+# git completion
+GIT_COMPLETION_DIR=/home/wwoley/.bash_completion.d
+
+export HISTTIMEFORMAT='%F %T '
+shopt -s histappend
+export HISTFILESIZE=100000
+export HISTCONTROL=ignoredups:erasedups
+export PROMPT_COMMAND="history -a;history -c;history -r; $PROMPT_COMMAND"
+
+export PS1="[\d @ \t][\u@\h \w][\!]\\$ "
+
+# aliases
+#alias fastant="ant -Dskip.download=true -Divy.has.resolved=true"
+#alias fant=fastant
+
+# added by Anaconda2 installer
+export PATH="/home/wwoley/anaconda2/bin:$PATH"
+export EDITOR=vim
